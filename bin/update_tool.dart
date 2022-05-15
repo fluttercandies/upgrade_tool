@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 void main(List<String> arguments) async {
@@ -8,35 +7,48 @@ void main(List<String> arguments) async {
   handlePath(libPath);
 }
 
-void handlePath(String path) async {
-  print(path);
-
-  /// 如果是文件，则进行处理
-  if (await FileSystemEntity.isFile(path)) handleCodeFile(path);
+Future<void> handlePath(String path) async {
+  if (await FileSystemEntity.isFile(path)) await handleCodeFile(path);
 
   if (await FileSystemEntity.isDirectory(path)) {
     Directory dir = Directory(path);
     if (await dir.exists()) {
-      // 从目录的list方法获取FileSystemEntity对象
       var list = dir.listSync();
       for (var element in list) {
-        handlePath(element.path);
+        await handlePath(element.path);
       }
     }
   }
-  // 如果是文件夹，递归处理所有的子集目录
 }
 
-void handleCodeFile(String path) async {
+Future<void> handleCodeFile(String path) async {
+  print(path);
   if (path.contains('.dart')) {
     File file = File(path);
+    bool hasMatched = false;
     List<String> codes = await file.readAsLines();
     for (int i = 0; i < codes.length; i++) {
-      // codes[i].replaceAllMapped("", (match) => "instance");
-      print(codes[i].allMatches(match.toString()));
+      codes[i] = codes[i].replaceAllMapped(regExp, (match) {
+        hasMatched = true;
+        return match[0]?.replaceAll('!', '') ?? match.input;
+      });
+    }
+    if (hasMatched) {
+      file.writeAsString(join(codes, '\n'));
     }
   }
 }
 
-String match =
-    'SchedulerBinding.instance\!|WidgetsBinding.instance\!|GestureBinding.instance\!|RendererBinding.instance\!|ServicesBinding.instance\!| PaintingBinding.instance\!|SemanticsBinding.instance\!';
+String join(List<String> sources, String separator) {
+  if (sources.isEmpty) return "";
+  StringBuffer buffer = StringBuffer();
+  for (int i = 0; i < sources.length; i++) {
+    buffer.write(sources[i]);
+    if (i != sources.length) buffer.write(separator);
+  }
+  return buffer.toString();
+}
+
+String pattern =
+    r'\W(Scheduler|Widgets|Gesture|Renderer|Services|Painting|Semantics)Binding.instance\!';
+RegExp regExp = RegExp(pattern);

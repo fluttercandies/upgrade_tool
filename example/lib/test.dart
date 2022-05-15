@@ -12,4 +12,6 @@ void test() {
   ServicesBinding.instance!.runtimeType;
   PaintingBinding.instance!.runtimeType;
   SemanticsBinding.instance!.runtimeType;
+  defaultSchedulingStrategy(
+      priority: 100, scheduler: SchedulerBinding.instance);
 }
