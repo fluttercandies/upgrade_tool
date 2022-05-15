@@ -1,6 +1,7 @@
 name: upgrade_tool
 description: A simple command-line application.
 version: 1.0.0
+homepage: https://github.com/Nayuta403/upgrade_tool
 # homepage: https://www.example.com
 
 environment:
