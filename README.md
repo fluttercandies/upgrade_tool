@@ -13,3 +13,7 @@ Directly run this command :
 ```dart
     dart run upgrade_tool
 ```
+
+All the positions are automatically changed
+
+![image](https://user-images.githubusercontent.com/40540394/168479984-0cb3094d-d220-47c6-91b3-307bdd3158b7.png)
