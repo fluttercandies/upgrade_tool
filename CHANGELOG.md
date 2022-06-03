@@ -17,3 +17,7 @@
 ## 1.0.4
 
 - Support usage '?'
+
+## 1.0.5
+
+- fix usage await xxbinding
