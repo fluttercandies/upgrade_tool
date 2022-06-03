@@ -15,6 +15,8 @@ Directly run this command :
 
 All the positions are automatically changed
 
-<img width="1393" alt="image" src="https://user-images.githubusercontent.com/40540394/171782115-ef6d5944-8d2e-4cfc-8192-7b306d91ad3a.png">
+<img width="1433" alt="image" src="https://user-images.githubusercontent.com/40540394/171787141-4f54cc63-5c83-4846-8284-80b1b8d50456.png">
 
-#### Note that original dependencies are not removed by default,If you need to remove it, you can add the -remove argument, may cause your dependency error**
+#### Note that original dependencies are not removed by default,If you need to remove it, you can add the -remove argument, may cause your dependency error
+
+#### After the migration, you can remove the upgrade_tool dependency
