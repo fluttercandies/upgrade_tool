@@ -1,9 +1,11 @@
 import 'dart:io';
 import 'package:process_run/shell.dart';
 
+bool remove = false;
+
 void main(List<String> arguments) async {
   Directory currentProject = Directory.current;
-
+  if (arguments.contains('-remove')) remove = true;
   var shell = Shell();
 
   await shell
@@ -50,11 +52,14 @@ Future<void> handleCodeFile(String path) async {
     if (hasMatched) {
       codes.insert(1,
           'import \'package:bindings_compatible/bindings_compatible.dart\';');
-      codes.remove('import \'package:flutter/gestures.dart\';');
-      codes.remove('import \'package:flutter/rendering.dart\';');
-      codes.remove('import \'package:flutter/scheduler.dart\';');
-      codes.remove('import \'package:flutter/services.dart\';');
-      codes.remove('import \'package:flutter/widgets.dart\';');
+      if (remove) {
+        codes.remove('import \'package:flutter/gestures.dart\';');
+        codes.remove('import \'package:flutter/rendering.dart\';');
+        codes.remove('import \'package:flutter/scheduler.dart\';');
+        codes.remove('import \'package:flutter/services.dart\';');
+        codes.remove('import \'package:flutter/widgets.dart\';');
+      }
+
       file.writeAsString(join(codes, '\n'));
     }
   }
