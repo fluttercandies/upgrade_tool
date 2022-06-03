@@ -71,5 +71,5 @@ String join(List<String> sources, String separator) {
 }
 
 String pattern =
-    r'\W(Scheduler|Widgets|Gesture|Renderer|Services|Painting|Semantics)Binding.instance\!';
+    r'\W(Scheduler|Widgets|Gesture|Renderer|Services|Painting|Semantics)Binding.instance(\!|\?)';
 RegExp regExp = RegExp(pattern);
