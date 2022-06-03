@@ -15,4 +15,6 @@ Directly run this command :
 
 All the positions are automatically changed
 
-![image](https://user-images.githubusercontent.com/40540394/171779104-5b0b5604-7093-4a70-85e4-c3a5b3a8d776.png)
+<img width="1393" alt="image" src="https://user-images.githubusercontent.com/40540394/171782115-ef6d5944-8d2e-4cfc-8192-7b306d91ad3a.png">
+
+**Note that the original dependencies are removed by default, May cause your dependency error**
