@@ -1,8 +1,7 @@
 # Used to resolve warnings caused by `xxxbinding. Instance` in Flutter 3.0
 
-In Flutter 3.0, `instance` cannot be null. I need to make changes everywhere the code is used. I think it's troublesome
+Resolved the warning of 'xxxbinding. Instance' in 3.0, compatible with previous versions
 
-So I wrote a dart Command Line that automatically changed instance!
 
 # Usage
 Add dependence：
@@ -16,4 +15,4 @@ Directly run this command :
 
 All the positions are automatically changed
 
-![image](https://user-images.githubusercontent.com/40540394/168479984-0cb3094d-d220-47c6-91b3-307bdd3158b7.png)
+![image](https://user-images.githubusercontent.com/40540394/171779104-5b0b5604-7093-4a70-85e4-c3a5b3a8d776.png)
