@@ -1,7 +1,12 @@
 import 'dart:io';
+import 'package:process_run/shell.dart';
 
 void main(List<String> arguments) async {
   Directory currentProject = Directory.current;
+
+  var shell = Shell();
+
+  await shell.run('flutter pub add bindings_compatible').onError((error, stackTrace) => []);
 
   String libPath = currentProject.path + '/lib';
   handlePath(libPath);
@@ -30,10 +35,19 @@ Future<void> handleCodeFile(String path) async {
     for (int i = 0; i < codes.length; i++) {
       codes[i] = codes[i].replaceAllMapped(regExp, (match) {
         hasMatched = true;
-        return match[0]?.replaceAll('!', '') ?? match.input;
+        String? binding;
+        try {
+          binding = 'use${match[0]?.split('.')[0]}()'.replaceAll(' ', '');
+        } catch (e) {
+          print(e);
+          binding = match.input;
+        }
+        return binding;
       });
     }
     if (hasMatched) {
+      codes.insert(
+          1, 'import \'package:bindings_compatible/bindings_compatible.dart\';');
       file.writeAsString(join(codes, '\n'));
     }
   }
