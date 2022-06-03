@@ -1,6 +1,6 @@
 name: upgrade_tool
 description: Used to resolve warnings caused by `xxxbinding. Instance` in Flutter 3.0
-version: 1.0.3
+version: 1.0.4
 
 homepage: https://github.com/fluttercandies/upgrade_tool
 
