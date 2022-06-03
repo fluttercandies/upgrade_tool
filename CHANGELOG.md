@@ -9,3 +9,7 @@
 ## 1.0.2
 
 - update usage
+
+## 1.0.3
+
+- Support for projects that are not 3.0
