@@ -13,3 +13,7 @@
 ## 1.0.3
 
 - Support for projects that are not 3.0
+
+## 1.0.4
+
+- Support usage '?'
